@@ -3,23 +3,25 @@ const joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Validation Schemas for the request body
-
-const UserSchema = joi.object().keys({
-    firstName: joi.string().trim().required(),
-    lastName: joi.string().trim().required(),
-    email: joi.string().trim().email().required(),
-    age: joi.number().min(18).max(65).required(),
-    dob: joi.string().trim().required(),
-    password: joi.string().trim().min(8).required(),
-    familyMembers: joi.array()
-})
-
 const register = async(req, res) => {
+    // parse req.body.familyMembers to return an array
+    req.body.familyMembers = JSON.parse(req.body.familyMembers)
+
+    // Validation Schema for the request body
+    const UserSchema = joi.object().keys({
+        firstName: joi.string().trim().required(),
+        lastName: joi.string().trim().required(),
+        email: joi.string().trim().email().required(),
+        age: joi.number().min(18).max(65).required(),
+        dob: joi.string().trim().required(),
+        password: joi.string().trim().min(8).required(),
+        familyMembers: joi.array()
+    })
+
     // validate the request body
     const {error} = UserSchema.validate(req.body);
 
-    if(error) return res.status(400).json({error: error.details[0].message});
+    if(error) console.log(error)//return res.status(400).json({error: error.details[0].message});
 
    console.log(req.file.path)
 
@@ -41,7 +43,7 @@ const register = async(req, res) => {
         age: req.body.age,
         dob: req.body.dob,
         passportPhoto: req.file.path,
-        familyMembers: JSON.parse(req.body.familyMembers)
+        familyMembers: req.body.familyMembers
     })
 
     try {
