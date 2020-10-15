@@ -8,6 +8,10 @@ class AuthDataService {
     login(data) {
         return http.post("/user/login", data)
     }
+
+    validateUser(data) {
+        return http.post("/user/validateuser", data)
+    }
 }
 
 export default new AuthDataService()

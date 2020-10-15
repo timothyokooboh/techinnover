@@ -79,7 +79,22 @@ export default {
             })
 
             console.log(loginUser)
-            this.contentLoading = false
+            this.contentLoading = false;
+
+            this.$store.state.firstName = loginUser.data.data.firstName;
+            this.$store.state.lastName = loginUser.data.data.lastName;
+            this.$store.state.email = loginUser.data.data.email;
+            this.$store.state.age = loginUser.data.data.age;
+            this.$store.state.dob = loginUser.data.data.dob;
+            this.$store.state.familyMembers = loginUser.data.data.familyMembers;
+            this.$store.state.userToken = loginUser.data.token;
+          
+            // save user token and user ID to cookies
+            this.$cookies.set("v-userToken", loginUser.data.token);
+            this.$cookies.set("v-userId", loginUser.data.data._id);
+
+            // redirect to dashboard
+            this.$router.push("/dashboard");
         }
         catch(error) {
             console.log(error)

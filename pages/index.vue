@@ -311,18 +311,25 @@ export default {
         formData.append("familyMembers", JSON.stringify(this.user.familyMembers))
 
         try {
-          /*const addUser = await AuthDataService.register({
-            firstName: this.user.userDetails.firstName,
-            lastName: this.user.userDetails.lastName,
-            age: this.user.userDetails.age,
-            dob: this.user.userDetails.dob,
-            email: this.user.userDetails.email,
-            password: this.user.userDetails.password,
-            familyMembers: this.user.familyMembers
-          });*/
           const addUser = await AuthDataService.register(formData)
           this.contentLoading = false;
           console.log(addUser)
+
+          this.$store.state.firstName = addUser.data.data.firstName;
+          this.$store.state.lastName = addUser.data.data.lastName;
+          this.$store.state.email = addUser.data.data.email;
+          this.$store.state.age = addUser.data.data.age;
+          this.$store.state.dob = addUser.data.data.dob;
+          this.$store.state.familyMembers = addUser.data.data.familyMembers;
+          this.$store.state.userToken = addUser.data.token
+          
+          // save user token and user ID to cookies
+          this.$cookies.set("v-userToken", addUser.data.token);
+          this.$cookies.set("v-userId", addUser.data.data._id);
+
+          // redirect to dashboard
+          this.$router.push("/dashboard");
+
         }
         catch(err) {
           console.log(err)

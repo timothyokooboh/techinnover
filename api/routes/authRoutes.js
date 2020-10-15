@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const {register} = require("../controllers/auth/RegisterController");
 const {login} = require("../controllers/auth/LoginController");
+const {autoLogin} = require("../controllers/auth/UsersController");
 
 // The uploaded image will be saved in Cloudinary
 const multer = require("multer");
@@ -35,5 +36,6 @@ router.post("/register", parser.single("image"), register)
 
 // API endpoint for login
 router.post("/login", login);
+router.post("/validateuser", autoLogin)
 
 module.exports = router;

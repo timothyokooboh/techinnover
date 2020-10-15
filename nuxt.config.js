@@ -53,6 +53,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    ['cookie-universal-nuxt', { parseJSON: false }],
   ],
   /*
   ** vuetify module configuration
