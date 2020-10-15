@@ -15,7 +15,13 @@ export const state = () => ({
 
 export const actions = {
     async nuxtServerInit({state}, {redirect, route, app}) {
+        // get current path
+        let currentPath = route.path;
         
+        if(currentPath == "/dashboard") {
+            currentPath = "/login"
+        }
+        console.log(currentPath)
         // only set showOnPageLoader to true if nuxtServerInit runs on the home page
         if(route.path == "/") {
             state.showOnPageLoader = true;
@@ -40,7 +46,7 @@ export const actions = {
 
         }
         catch(err) {
-            redirect("/login")
+            redirect(`${currentPath}`)
         } 
 
     }
