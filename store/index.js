@@ -1,4 +1,5 @@
 export const strict = false;
+import AuthDataService from "../services/AuthDataService";
 
 export const state = () => ({
     firstName: null,
