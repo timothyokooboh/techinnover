@@ -17,9 +17,9 @@ const UserSchema = joi.object().keys({
 
 const register = async(req, res) => {
     // validate the request body
-    //const {error} = UserSchema.validate(req.body);
+    const {error} = UserSchema.validate(req.body);
 
-    //if(error) return res.status(400).json({error: error.details[0].message});
+    if(error) return res.status(400).json({error: error.details[0].message});
 
    console.log(req.file.path)
 
