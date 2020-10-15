@@ -308,10 +308,7 @@ export default {
         formData.set("dob", this.user.userDetails.dob)
         formData.set("email", this.user.userDetails.email)
         formData.set("password", this.user.userDetails.password)
-        for (var i = 0; i < this.user.familyMembers.length; i++) {
-          formData.append('familyMembers[]', this.user.familyMembers[i]);
-        }
-        
+        formData.append("familyMembers", JSON.stringify(this.user.familyMembers))
 
         try {
           /*const addUser = await AuthDataService.register({
