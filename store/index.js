@@ -13,11 +13,39 @@ export const state = () => ({
     userId: null
 })
 
+export const mutations = {
+    m_logout(state) {
+
+        //redirect to login page
+        $nuxt.$router.push("/login")
+
+        state.firstName = null;
+        state.lastname = null;
+        state.email = null;
+        state.age= null;
+        state.dob = null;
+        state.familyMembers = [];
+        state.photo = null;
+        state.userId = null;
+        state.userToken = null;
+
+        // remove cookies
+        this.$cookies.remove("v-userId");
+        this.$cookies.remove("v-userToken");
+
+    }
+}
+
+
 export const actions = {
+    a_logout({commit}) {
+        commit("m_logout")
+    },
+
     async nuxtServerInit({state}, {redirect, route, app}) {
         // get current path
         let currentPath = route.path;
-        
+
         if(currentPath == "/dashboard") {
             currentPath = "/login"
         }

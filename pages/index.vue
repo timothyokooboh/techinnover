@@ -185,6 +185,7 @@
                 @click="addToFamilyMembers" 
                 class="my-3 white--text"
                 color="#1D5FA9" 
+                width="100%"
               >
                 Add to family members
               </v-btn>
@@ -253,6 +254,9 @@ export default {
 
       contentLoading: false
     }
+  },
+  mounted() {
+    alert(window.innerWidth)
   },
   
   methods: {
@@ -369,6 +373,12 @@ export default {
       url("~assets/bgimage.jpg");
     background-size: cover;
     background-position: center;
+
+    @media only screen and(max-width: 54.7em) {
+      background-image: 
+      linear-gradient(80deg, rgba($color-plain-white, .9) 0%, rgba($color-plain-white, .9) 100%),
+      url("~assets/bgimage.jpg");
+    }
   }
 
   .form {
@@ -376,6 +386,10 @@ export default {
     margin: 2rem 0;
     padding: 2rem 1rem;
     color: $color-grey;
+
+    @media only screen and(max-width: 54.7em) {
+      width: 100%;
+    }
 
     h1 {
       font-weight: 300;

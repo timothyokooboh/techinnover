@@ -127,6 +127,12 @@ export default {
     background-size: cover;
     background-position: center;
     position: relative;
+
+     @media only screen and(max-width: 54.7em) {
+      background-image: 
+      linear-gradient(80deg, rgba($color-plain-white, .9) 0%, rgba($color-plain-white, .9) 100%),
+      url("~assets/bgimage.jpg");
+    }
   }
 
   .form {
@@ -138,6 +144,10 @@ export default {
     top: 40%;
     left: 0%;
     transform: translateY(-40%);
+
+    @media only screen and(max-width: 54.7em) {
+      width: 100%;
+    }
 
     h1 {
       font-weight: 300;
