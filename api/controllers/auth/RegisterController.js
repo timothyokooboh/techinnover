@@ -21,9 +21,7 @@ const register = async(req, res) => {
     // validate the request body
     const {error} = UserSchema.validate(req.body);
 
-    if(error) console.log(error)//return res.status(400).json({error: error.details[0].message});
-
-   console.log(req.file.path)
+    if(error) return res.status(400).json({error: error.details[0].message});
 
     // Check if email already exists
     const emailExists = await User.findOne({email: req.body.email});

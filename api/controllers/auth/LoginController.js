@@ -3,13 +3,14 @@ const joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Validation Schema
-const LoginSchema = joi.object().keys({
-    email: joi.string().trim().email().required(),
-    password: joi.string().trim().min(8).required()
-})
-
 const login = async(req, res) => {
+
+    // Validation schema for login
+    const LoginSchema = joi.object().keys({
+        email: joi.string().trim().email().required(),
+        password: joi.string().trim().min(8).required()
+    })
+
     // Validate user's request
     const {error} = LoginSchema.validate(req.body)
 
