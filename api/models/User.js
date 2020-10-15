@@ -34,10 +34,10 @@ const UserSchema = mongoose.Schema(
             min: 8
         },
 
-        familyMembers: {
+        /*familyMembers: {
             type: Array
-        }
-        /*familyMembers: [
+        }*/
+        familyMembers: [
             {
                 familyMemberAge: {
                     type: String
@@ -52,7 +52,7 @@ const UserSchema = mongoose.Schema(
                     type: String
                 }
             }
-        ]*/
+        ]
     },
     {timestamps: true}
 )
