@@ -255,9 +255,6 @@ export default {
       contentLoading: false
     }
   },
-  mounted() {
-    alert(window.innerWidth)
-  },
   
   methods: {
     showFamilyForm() {
