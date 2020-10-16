@@ -322,6 +322,7 @@ export default {
           this.$store.state.age = addUser.data.data.age;
           this.$store.state.dob = addUser.data.data.dob;
           this.$store.state.familyMembers = addUser.data.data.familyMembers;
+          this.$store.state.photo = addUser.data.data.passportPhoto;
           this.$store.state.userToken = addUser.data.token
           
           // save user token and user ID to cookies

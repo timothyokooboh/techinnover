@@ -86,6 +86,7 @@ export default {
             this.$store.state.email = loginUser.data.data.email;
             this.$store.state.age = loginUser.data.data.age;
             this.$store.state.dob = loginUser.data.data.dob;
+            this.$store.state.photo = loginUser.data.data.passportPhoto;
             this.$store.state.familyMembers = loginUser.data.data.familyMembers;
             this.$store.state.userToken = loginUser.data.token;
           
