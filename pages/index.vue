@@ -86,7 +86,7 @@
           </v-text-field>
 
           <v-text-field
-            label="Paaword"
+            label="Password"
             v-model="user.userDetails.password"
             type="password"
             outlined

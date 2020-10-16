@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const register = async(req, res) => {
+    console.log(req.body.familyMembers)
     // parse req.body.familyMembers to return an array
     req.body.familyMembers = JSON.parse(req.body.familyMembers)
 

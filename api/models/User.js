@@ -36,7 +36,7 @@ const UserSchema = mongoose.Schema(
         familyMembers: [
             {
                 familyMemberAge: {
-                    type: String
+                    type: Number
                 },
                 familyMemberFirstName: {
                     type: String

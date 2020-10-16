@@ -28,7 +28,7 @@
                         <div>{{$store.state.age}}</div>
                     </div>
 
-                    <h2>Family members</h2>
+                    <h2 v-if="$store.state.familyMembers.length">Family members</h2>
 
                     <v-card
                         v-for="(member, index) in $store.state.familyMembers"
