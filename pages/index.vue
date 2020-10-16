@@ -1,6 +1,16 @@
 
 <template>
   <div class="register">
+    <v-snackbar
+      top
+      :timeout="5000"
+      color="red"
+      class="white--text"
+      v-model="showSnackbar"
+    >
+      <div class="text-center">Something went wrong. Please try again</div>
+    </v-snackbar>
+
     <div class="form-container">
       <div class="form">
         <h1 class="u-uppercase">Kindly fill your personal details</h1>
@@ -215,6 +225,7 @@ import AuthDataService from "../services/AuthDataService";
 export default {
   data() {
     return {
+      showSnackbar: false,
       showForm: false,
       dob: null,
       file: null,
@@ -334,7 +345,7 @@ export default {
 
         }
         catch(err) {
-          console.log(err)
+          this.showSnackbar = true;
           this.contentLoading = false;
         }
       }

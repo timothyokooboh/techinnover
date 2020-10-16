@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Loader v-if="$route.path == '/' && showOnPageLoader" />
     <TheAppBar />
     <v-main>
       <nuxt />
@@ -9,8 +10,17 @@
 
 <script>
 import TheAppBar from "../components/UI/TheAppBar";
+import Loader from "../components/Loader";
+import {mapState} from "vuex";
+
 export default {
-  TheAppBar
+  components: {
+    TheAppBar,
+    Loader
+  },
+  computed: {
+    ...mapState(["showOnPageLoader"])
+  }
 }
 </script>
 

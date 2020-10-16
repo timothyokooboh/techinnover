@@ -1,6 +1,16 @@
 
 <template>
-  <div class="register">
+  <div class="login">
+    <v-snackbar
+      top
+      :timeout="5000"
+      color="red"
+      class="white--text"
+      v-model="showSnackbar"
+    >
+      <div>Something went wrong. Please try again</div>
+    </v-snackbar>
+
     <div class="form-container">
       <div class="form">
             <h1 class="u-uppercase"> Sign in to your account </h1>
@@ -51,18 +61,19 @@ import AuthDataService from "../../services/AuthDataService";
 export default {
   data() {
     return {
-        email: null,
-        password: "",
-        contentLoading: false,
+      showSnackbar: false,
+      email: null,
+      password: "",
+      contentLoading: false,
 
-        passwordRules: [
-            v => !!v || "This field is required",
-            v => v.length >=8 || "Password must have a minimum of 8 characters"
-        ],
-        emailRules: [
-            v => !!v || "This field is required",
-            v =>   /.+@.+\..+/.test(v) || "Must be a valid email address"
-        ],
+      passwordRules: [
+        v => !!v || "This field is required",
+        v => v.length >=8 || "Password must have a minimum of 8 characters"
+      ],
+      emailRules: [
+        v => !!v || "This field is required",
+        v =>   /.+@.+\..+/.test(v) || "Must be a valid email address"
+      ],
     }
    
   },
@@ -98,8 +109,8 @@ export default {
             this.$router.push("/dashboard");
         }
         catch(error) {
-            console.log(error)
-            this.contentLoading = false
+            this.showSnackbar = true;
+            this.contentLoading = false;
         }
      }
     }
@@ -112,7 +123,7 @@ export default {
 <style lang="scss" scoped>
 @import "~assets/utilities.scss";
 
-  .register {
+  .login {
     background-color: $color-primary;
     min-height: 100vh;
     padding: 2rem 0
