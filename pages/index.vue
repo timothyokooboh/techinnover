@@ -71,6 +71,7 @@
             :rules="ageRules"
           >
           </v-text-field>
+          <p class="red--text" v-if="(user.userDetails.age < 18 || user.userDetails.age > 65 )&& showAgeRules">Age must be between 18 and 65</p>
 
           <v-text-field
             label="Email Addresss"
@@ -129,7 +130,7 @@
           >
             <v-tooltip top>
               <template v-slot:activator="{on}">
-                <v-btn v-on="on" text class="pb-5 float-right" @click="removeFamilyMember">
+                <v-btn v-on="on" text class="pb-5 float-right" @click="removeFamilyMember(index)">
                   <v-icon>mdi-close</v-icon>
                 </v-btn>
               </template>
@@ -225,6 +226,7 @@ import AuthDataService from "../services/AuthDataService";
 export default {
   data() {
     return {
+      showAgeRules: false,
       showSnackbar: false,
       showForm: false,
       dob: null,
@@ -260,7 +262,7 @@ export default {
         v =>   /.+@.+\..+/.test(v) || "Must be a valid email address"
       ],
       ageRules: [
-        v => (v >= 18 && v <=65) || "Age must be between 18 and 65"
+        v => (v >= 18 && v <=65)
       ],
 
       contentLoading: false
@@ -348,6 +350,9 @@ export default {
           this.showSnackbar = true;
           this.contentLoading = false;
         }
+      } else {
+        this.showAgeRules = true
+        window.scrollTo(0, 0)
       }
     }
 
