@@ -13,43 +13,42 @@
 
     <div class="form-container">
       <div class="form">
-            <h1 class="u-uppercase"> Sign in to your account </h1>
+        <h1 class="u-uppercase"> Sign in to your account </h1>
 
-            <v-form ref="form">
+        <v-form ref="form">
+          <v-text-field
+            label="Email Addresss"
+            v-model="email"
+            outlined
+            dense
+            clearable
+            append-icon="mdi-email"
+            class="form__input"
+            :rules="emailRules"
+          >
+          </v-text-field>
 
-                <v-text-field
-                    label="Email Addresss"
-                    v-model="email"
-                    outlined
-                    dense
-                    clearable
-                    append-icon="mdi-email"
-                    class="form__input"
-                    :rules="emailRules"
-                >
-                </v-text-field>
+          <v-text-field
+            label="Password"
+            v-model="password"
+            type="password"
+            outlined
+            dense
+            append-icon="mdi-key"
+            class="form__input"
+            :rules="passwordRules"
+          >
+          </v-text-field>
 
-                <v-text-field
-                    label="Password"
-                    v-model="password"
-                    type="password"
-                    outlined
-                    dense
-                    append-icon="mdi-key"
-                    class="form__input"
-                    :rules="passwordRules"
-                >
-                </v-text-field>
-                    <v-btn
-                    class="form__input my-5 white--text"
-                    color="#20234E" 
-                    @click="submit"
-                    :loading="contentLoading"
-                    >
-                    login
-                </v-btn>
-
-            </v-form>
+          <v-btn
+            class="form__input my-5 white--text"
+            color="#20234E" 
+            @click="submit"
+            :loading="contentLoading"
+          >
+            login
+          </v-btn>
+        </v-form>
       </div>
     </div>
   </div>
