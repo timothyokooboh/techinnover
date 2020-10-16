@@ -30,7 +30,7 @@
                 </v-text-field>
 
                 <v-text-field
-                    label="Paaword"
+                    label="Password"
                     v-model="password"
                     type="password"
                     outlined
